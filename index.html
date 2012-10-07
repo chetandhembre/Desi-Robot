@@ -479,6 +479,24 @@
 			}
 			
 			
+			@-webkit-keyframes namaste {
+			 from {
+			   opacity: 0.0;
+			   font-size: 100%;
+			 }
+			 to {
+			   opacity: 1.0;
+			   font-size: 300%;
+			 }
+			}
+			
+			#namaste {
+			  -webkit-animation-name: namaste;
+			  -webkit-animation-duration: 1s;
+			  -webkit-animation-iteration-count: 1;
+			  -webkit-animation-timing-function: ease-in-out;
+			  -webkit-animation-direction: alternate;
+			}
 		</style>
 		
 		<script type="text/javascript">
@@ -496,6 +514,7 @@
 				document.getElementById("mouth").className="mouth-happy";
 				document.getElementById("leftleg-middle").className="middle";
 				document.getElementById("rightleg-middle").className="middle";
+				document.getElementById("namaste").style.display="block";
 				
 			}
 			
@@ -512,6 +531,7 @@
 			    document.getElementById("mouth").className="mouth-sad";
 			    document.getElementById("leftleg-middle").className="middle1";
 				document.getElementById("rightleg-middle").className="middle1";
+				document.getElementById("namaste").style.display="none";
 			}
 			
 			function onmove(){
@@ -547,7 +567,7 @@
 		</script>
 	</head>
 	<body  bgcolor="black" >
-        <div class="desiman"  style="width: 500px;height: 500px;background-color: white;cursor: pointer" onmousemove="onmove()">
+        <div class="desiman"  style="width: 300px;height: 500px;background-color: white;cursor: pointer" onmousemove="onmove()">
         	
         	<div class="cap" ></div>
         	<div class="left-ear" >
@@ -621,6 +641,12 @@
         			<div class="toa"></div>
         		</div>
         	</div>
+        	
+        	<div style="top:400px;left:50px;position: absolute;display:none;font-size: 300%;color:red" id="namaste"> Namaste!!!</div>
+        	
+        </div>
+        <div style="color: white;font-size: 18px;">
+        	To see effect please move mouse over white region!!!
         </div>
 	</body>
 </html>
