@@ -7,68 +7,63 @@
 		<title>HTML</title>
 		<meta name="author" content="ChetanD" />
 		<!-- Date: 2012-10-06 -->
-		
+		<script src="jquery.js" type="application/javascript"></script>
 		<style type="text/css">
 			
 			
 			
 			
 			.cap{
-				position:absolute;
+				position:relative;
 				width: 0; 
 				height: 0;
-				left:87px;
-				top:2px; 
-				
+					
 				border-left: 55px solid transparent;
 				border-right: 55px solid transparent;
 				border-bottom: 30px solid black;
-				z-index: 1000;
+				
 			}
 			.head{
-				margin-left: 80px;
-			   	margin-top: 18px;
-				position: absolute;
-				
-				width: 100px;
+				margin-top: -5px;
+				position: relative;
+				width: 104px;
 				height: 85px;
-				border-bottom-left-radius:20px;
-				border-bottom-right-radius:20px;
-				border-top-right-radius:20px;
-				border-top-left-radius:20px;
+				border-bottom-left-radius: 20px;
+				border-bottom-right-radius: 20px;
+				border-top-right-radius: 20px;
+				border-top-left-radius: 20px;
 				border: 1px solid black;
-				border-bottom:  5px solid black;
+				border-bottom: 5px solid black;
 				border-left: 3px solid black;
 				border-right: 3px solid black;
 			}
 			
 			.body{
-				position: absolute;
-				width:120px;
+				position: relative;
+				width: 120px;
 				height: 100px;
-				top:120px;
-				left:79px;
-				border:3px solid black;
+				left: -9px;
+				top:3px;
+				border: 3px solid black;
 				border-radius: 5px;
-				
 			}
 			
 			.hands{
-			   position: absolute;
-			   top:125px;
-			   width: 65px;
-			   height:130px;
-			   	
+			   margin-left: -78px;
+				width: 65px;
+				height: 130px;
+				float: left;
 			}
+			   	
+			
 			
 			.legs{
-				position: absolute;
-				width:100px;
-				height:120px;
-				top:230px;
-				left:94px;
-				
-				
+				position: relative;
+				width: 100px;
+				height: 120px;
+				top: -18px;
+				left: 6px;
+								
 			}
 			.glass{
 				position:absolute;
@@ -207,43 +202,41 @@
 			}
 			
 			.left-ear{
-				position: absolute;
-				top:40px;
-				left:74px;
+				position: relative;
+				margin-left: -13px;
+				margin-top: 10px;
+				float: left;
 				width: 12px;
 				height: 15px;
-				
-				border:1px solid black;
+				border: 1px solid black;
 				border-top-right-radius: 300px;
 				border-bottom-right-radius: 300px;
 				border-top-left-radius: 225px;
 				border-bottom-left-radius: 225px;
 				border-left: 0px solid white;
 				border-top-style: groove;
-				border-top:3px solid black;
+				border-top: 3px solid black;
 				border-bottom: 5px solid black;
 				border-right: 4px solid black;
-				
 			}
 			
 			.right-ear{
-				position: absolute;
-				top:40px;
-				left:192px;
+				position: relative;
+				float: right;
+				top: -25px;
+				left: 125px;
 				width: 12px;
 				height: 15px;
-				
-				border:1px solid black;
+				border: 1px solid black;
 				border-top-left-radius: 300px;
 				border-bottom-left-radius: 300px;
 				border-top-right-radius: 225px;
 				border-bottom-right-radius: 225px;
 				border-right: 0px solid white;
 				border-top-style: groove;
-				border-top:3px solid black;
+				border-top: 3px solid black;
 				border-bottom: 5px solid black;
 				border-left: 4px solid black;
-				
 			}
 			
 			.middle-leftear{
@@ -335,8 +328,7 @@
 			}
 			
 			.rightside{
-				
-				left:175px;
+				margin-left: 88px;
 			}
 			
 			.upper-hand{
@@ -539,11 +531,12 @@
 				var y=(window.event.clientY);
 				
 				var m=document.getElementsByClassName("eyeball");
-				
-			    if(y<42){
+				var ymin = $('#body').offset().top;
+				var ymax = ymin + $('#body').height(); 
+			    if(y<ymin){
 				   m[0].style.top=0+"px";
 				   m[1].style.top=0+"px"; 	
-				}else if(y<232){
+				}else if(y<ymax){
 				   m[0].style.top=2+"px";
 				   m[1].style.top=2+"px";
 				}else{
@@ -551,10 +544,13 @@
 				   m[1].style.top=4+"px";
 			    }
 				
-				if(x>=205){
+				
+				var xmin = $('#body').offset().left;
+				var xmax = xmin + $('#body').width();
+				if(x>=xmax){
 					m[0].style.left=9+"px";
 					m[1].style.left=9+"px";
-				}else if(x>=80){
+				}else if(x>=xmin){
 					m[0].style.left=5+"px";
 					m[1].style.left=5+"px";
 				}else{
@@ -562,12 +558,14 @@
 					m[1].style.left=0+"px";
 				}
 				
+				console.log(xmin + ":" + xmax)
+				console.log(ymin + ":" + ymax)
 				
 			}
 		</script>
 	</head>
-	<body  bgcolor="black" >
-        <div class="desiman"  style="width: 300px;height: 500px;background-color: white;cursor: pointer" onmousemove="onmove()">
+	<body  >
+        <div class="desiman"  style="width:0px;height:0px; wibackground-color: white;cursor: pointer; margin-left: 50%" onmousemove="onmove()">
         	
         	<div class="cap" ></div>
         	<div class="left-ear" >
@@ -575,25 +573,11 @@
         			
         		</div>
         	</div>
-        	
-        	<div class="hands" >
-        		<div class="upper-hand"></div>
-        		
-        		<div class="middle-hand"></div>
-        		<div class="lower-hand">
+        	<div class="right-ear" >
+        		<div class="middle-rightear">
         			
         		</div>
         	</div>
-        	
-        	<div class="hands rightside" >
-        		<div class="upper-righthand"></div>
-        		
-        		<div class="middle-righthand"></div>
-        		<div class="lower-righthand">
-        			
-        		</div>
-        	</div>
-        	
         	
         	<div class="head" >
         		
@@ -620,12 +604,28 @@
         		</div>
         		<div class="mouth-sad" id="mouth"></div>
         	</div>
-        	<div class="right-ear" >
-        		<div class="middle-rightear">
+        	
+        	<div class="hands" >
+        		<div class="upper-hand"></div>
+        		
+        		<div class="middle-hand"></div>
+        		<div class="lower-hand">
         			
         		</div>
         	</div>
-        	<div class="body" onmouseover="onhover()" onmouseout="onleave()">
+        	
+        	<div class="hands rightside" >
+        		<div class="upper-righthand"></div>
+        		
+        		<div class="middle-righthand"></div>
+        		<div class="lower-righthand">
+        			
+        		</div>
+        	</div>
+        	
+        	
+        	
+        	<div class="body" id = "body" onmouseover="onhover()" onmouseout="onleave()">
         		<div class="pocket left"></div>
         		<div class="pocket right"></div>
         	</div>
