@@ -74,7 +74,8 @@ function onmove(e){
 	
 	var m=$('.eyeball');
 	var ymin = $('#body').offset().top;
-	var ymax = ymin + $('#body').height(); 
+	var ymax = ymin + $('#body').height();
+	ymin = $('.sub-connector').offset().top 
     if(y<ymin){
 	   $(m[0]).css('top','0px');
 	   $(m[1]).css('top','0px');
@@ -94,7 +95,7 @@ function onmove(e){
 		$(m[1]).css('left','9px');
 	}else if(x>=xmin){
 		$(m[0]).css('left','5px');
-		$(m[1]).css('left','9px');
+		$(m[1]).css('left','5px');
 	}else{
 		$(m[0]).css('left','0px');
 		$(m[1]).css('left','0px');
